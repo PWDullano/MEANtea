@@ -7,6 +7,5 @@ app.controller('mainController', ['$scope', '$http', '$routeParams', 'AllTeas', 
     payload.data.forEach(function(teas){
       $scope.teas.push(teas)
     })
-    console.log($scope.teas);
   })
 }])

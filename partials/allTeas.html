@@ -18,11 +18,11 @@
 </div>
 <div ng-repeat="item in teas">
 <img src={{item.imageUrl}} alt="">
-<p>{{item.name}}</p>
-<p>{{item.price | number:2 | number |currency:'$'}}</p>
-<p>{{item.caffeineScale}}</p>
-<p>{{item.ingredients}}</p>
-<p>{{item.rating}}</p>
-<p>{{item.inStock}}</p>
-<p>{{item.categories}}</p>
+<p>Name: {{item.name}}</p>
+<p>Price:{{item.price | number:2 | number |currency:'$'}}</p>
+<p>Caffeine Scale:{{item.caffeineScale}}</p>
+<p>Ingredients: {{item.ingredients}}</p>
+<p>Rating: {{item.rating}}</p>
+<p>In stock: {{item.inStock | inStock}}</p>
+<p>Categories: {{item.categories}}</p>
 </div>

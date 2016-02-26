@@ -13,3 +13,16 @@
     <input type="submit" class="btn btn-danger">Checkout |
   </a>
 </div>
+<div data-ng-controller='mainController'>
+
+</div>
+<div ng-repeat="item in teas">
+<img src={{item.imageUrl}} alt="">
+<p>{{item.name}}</p>
+<p>{{item.price | number:2 | number |currency:'$'}}</p>
+<p>{{item.caffeineScale}}</p>
+<p>{{item.ingredients}}</p>
+<p>{{item.rating}}</p>
+<p>{{item.inStock}}</p>
+<p>{{item.categories}}</p>
+</div>

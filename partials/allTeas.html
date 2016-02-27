@@ -17,12 +17,13 @@
 
 </div>
 <div ng-repeat="item in teas">
-<img src={{item.imageUrl}} alt="">
-<p>Name: {{item.name}}</p>
-<p>Price:{{item.price | number:2 | number |currency:'$'}}</p>
-<p>Caffeine Scale:{{item.caffeineScale}}</p>
-<p>Ingredients: {{item.ingredients}}</p>
-<p>Rating: {{item.rating}}</p>
-<p>In stock: {{item.inStock | inStock}}</p>
-<p>Categories: {{item.categories}}</p>
+  <img src={{item.imageUrl}} alt="">
+  <p>Name: {{item.name}}</p>
+  <p>Price: {{item.price/100 |currency : $ : 2}}</p>
+  <p>Caffeine Scale:{{item.caffeineScale}}</p>
+  <p>Ingredients: {{item.ingredients}}</p>
+  <p>Rating: {{item.rating}}</p>
+  <p>In stock: {{item.inStock | inStock}}</p>
+  <p>Categories: {{arrayToString(item.categories)}}
+</div>
 </div>

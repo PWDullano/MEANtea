@@ -8,4 +8,8 @@ app.controller('mainController', ['$scope', '$http', '$routeParams', 'AllTeas', 
       $scope.teas.push(teas)
     })
   })
+  //categories properly being displayed
+  $scope.arrayToString = function(string){
+    return string.join(', ')
+  };
 }])

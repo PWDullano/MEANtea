@@ -4,6 +4,7 @@ app.controller('mainController', ['$scope', '$http', '$routeParams', 'AllTeas', 
 
   promise.then(function(payload){
     $scope.teas = [];
+    $scope.cartNumber = 0
     payload.data.forEach(function(teas){
       $scope.teas.push(teas)
     })

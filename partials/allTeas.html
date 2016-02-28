@@ -1,29 +1,58 @@
 <div class ='search'>
-  <p>Search by category:</p>
+  <div>Search by category:
   <select class="dropDown" name="dropDown" ng-model='sortBy'>
-    <option value="selected">--- Select ----</option>
-    <option value="-votes">Votes</option>
-    <option value="date">Date</option>
-    <option value="title">Title</option>
+    <option value="">--- Select ---</option>
+    <option value="dark">Dark</option>
+    <option value="cold">Cold</option>
+    <option value="awesome">Awesome</option>
+    <option value="dry">Dry</option>
+    <option value="hot">Hot</option>
+    <option value="summer">Summer</option>
+    <option value="lucid">Lucid</option>
+    <option value="warm">Warm</option>
+    <option value="winter">Winter</option>
+    <option value="spring">Spring</option>
   </select>
+</div>
   <br>
-  <p>Search by name:</p>
-  <input class= 'searchBar' type="text" ng-model="pizzle.$" placeholder='Search'>
+  <p>Search by name:<input class= 'searchBar' type="text" ng-model="pizzle.name" placeholder='Search'></p>
   <a href="/#/shoppingCart"
-    <input type="submit" class="btn btn-danger">Checkout |
+    <input type="submit" class="btn btn-danger pull-right">Checkout | {{cartNumber | number}}
   </a>
 </div>
-<div data-ng-controller='mainController'>
-
-</div>
-<div ng-repeat="item in teas">
-  <img src={{item.imageUrl}} alt="">
-  <p>Name: {{item.name}}</p>
-  <p>Price: {{item.price/100 |currency : $ : 2}}</p>
-  <p>Caffeine Scale:{{item.caffeineScale}}</p>
-  <p>Ingredients: {{item.ingredients}}</p>
-  <p>Rating: {{item.rating}}</p>
-  <p>In stock: {{item.inStock | inStock}}</p>
-  <p>Categories: {{arrayToString(item.categories)}}
-</div>
+<div></div>
+<table class="table table-bordered">
+  <th>Tea</th>
+  <th>Information
+    <div class= 'pull-right'>
+      Sort By Price:
+      <select class="price" name="priceDropDown" ng-model='sortByPrice'>
+        <option value="">--- Select ---</option>
+        <option value="-price">Highest</option>
+        <option value="+price">Lowest</option>
+      </select>
+    </div>
+  </th>
+<tr ng-repeat="item in teas | filter:pizzle | filter:sortBy | orderBy:sortByPrice">
+  <td>
+    <img ng-model='picture' src={{item.imageUrl}} alt="">
+  </td>
+  <td>
+    <div ng-model='name'><strong>Name: </strong>{{item.name}}
+      <button type="button" ng-click='cartNumber = cartNumber +1' class="btn btn-warning pull-right">Add To Bag</button>
+      <div class='pull-right'>Quantity:
+        <select class="quantity pull-right" name="quantity">
+          <option ng-repeat='i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]' value="{{i}}">{{i}}</option>
+        </select>
+      </div>
+    </div>
+    <p ng-model='price'><strong>Price: </strong>{{item.price/100 |currency : $ : 2}}</p>
+    <p ng-model='caffeine'><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
+    <p ng-model='ingredients'><strong>Ingredients: </strong>{{item.ingredients}}</p>
+    <p ng-model='rating'><strong>Rating: </strong>{{item.rating}}</p>
+    <p><strong>In stock: </strong>{{item.inStock | inStock}}</p>
+    <p><strong>Categories: </strong>{{arrayToString(item.categories)}}
+  </td>
+</tr>
+</table>
 </div>

@@ -1,16 +1,14 @@
-app.controller('mainController', ['$scope', '$http', '$routeParams', 'AllTeas', function($scope, $http, $routeParams, AllTeas){
+app.controller('mainController', ['$scope', '$http', 'AllTeas', 'TeaCart', function($scope, $http, AllTeas, TeaCart){
+  $scope.teas = [];
+  $scope.add = TeaCart.add
+  $scope.cart = TeaCart.cart
+  $scope.quantity = '1'
 
   var promise = AllTeas.getTeas();
 
   promise.then(function(payload){
-    $scope.teas = [];
-    $scope.cartNumber = 0
     payload.data.forEach(function(teas){
       $scope.teas.push(teas)
     })
   })
-  //categories properly being displayed
-  $scope.arrayToString = function(string){
-    return string.join(', ')
-  };
 }])

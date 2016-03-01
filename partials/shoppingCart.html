@@ -1,1 +1,50 @@
-<h1>SHOPPING CART</h1>
+<table class="table table-bordered">
+  <div class='shoppingHeader'>
+    <h3 class ='pull-left'>My Shopping Bag</h3>
+    <h3 class='pull-right'>Order total: {{ getTotal()/100 |currency : $ : 2 }}</h3>
+  </div>
+  <thead>
+    <tr>
+      <th>Tea</th>
+      <th>Quantity</th>
+      <th>Sub-total</th>
+    </tr>
+  </thead>
+  <tr ng-repeat='item in cart'>
+    <td>
+      <h3>{{item.name}}</h3>
+      <img src="{{item.picture}}" alt="">
+      <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
+      <p><strong>Ingredients: </strong>{{item.ingredients}}</p>
+      <p><strong>Rating: </strong>{{item.rating}}</p>
+    </td>
+    <td>
+      <span ng-hide="hideQty">{{item.quantity}}</span>
+      <span ng-show="showEdit">
+      <select class='editQuantity' ng-model='editQuantity' ng-change = "updateQuantity(editQuantity)">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      {{item.quantity}}
+    </td>
+    <td>
+      {{item.total/100 |currency : $ : 2}}
+    </td>
+    <td>
+      <button type="button" id='deleteButton' ng-click='remove($index)' class="btn btn-danger pull-right">Remove</button>
+      <button type="button" id='editButton' class="btn btn-warning navbar-btn editButton pull-right" ng-click="toggleEdit()" ng-hide="hideQty">Edit</button>
+      <button type="button" id='editButton' class="btn btn-success navbar-btn editButton pull-right" ng-show="showEdit" ng-click="toggleEdit()" >Save</button>
+    </td>
+  </tr>
+</table>
+<div class='submitCart'>
+  <a href="/#/"><input type="submit" value='Place Order!'class="btn btn-default pull-right"></a>
+</div>

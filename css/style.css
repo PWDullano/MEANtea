@@ -1,0 +1,49 @@
+.pageHeader{
+  color: #FC654B;
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.navbar{
+  width: 90vw;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.cheesy{
+  background-color: #FC654B;
+  color: white;
+  text-align: center;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.search{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.nameSearch{
+  margin-left: 25px;
+}
+
+.table{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.shoppingHeader{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.submitCart{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+#editButton{
+  margin-top: 0px;
+}

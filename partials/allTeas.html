@@ -1,6 +1,6 @@
 <div class ='search'>
-  <div>Search by category:
-  <select class="dropDown" name="dropDown" ng-model='sortBy'>
+  <div class='pull-left'>Search by category:
+  <select class="dropDown" name="dropDown" ng-model='sortBy.categories'>
     <option value="">--- Select ---</option>
     <option value="dark">Dark</option>
     <option value="cold">Cold</option>
@@ -13,14 +13,12 @@
     <option value="winter">Winter</option>
     <option value="spring">Spring</option>
   </select>
+  <p class='nameSearch pull-right'>Search by name:<input class= 'searchBar' type="text" ng-model="pizzle.name" placeholder='Search'></p>
 </div>
-  <br>
-  <p>Search by name:<input class= 'searchBar' type="text" ng-model="pizzle.name" placeholder='Search'></p>
   <a href="/#/shoppingCart"
-    <input type="submit" class="btn btn-danger pull-right">Checkout | {{cartNumber | number}}
+    <input type="submit" class="btn btn-danger pull-right">Checkout | <ng-pluralize count='cart.length' when="{'0': 'Empty!', '1': '(1) Item', 'other': '({{cart.length}}) Items'}"> </ng-pluralize>
   </a>
 </div>
-<div></div>
 <table class="table table-bordered">
   <th>Tea</th>
   <th>Information
@@ -38,11 +36,20 @@
     <img ng-model='picture' src={{item.imageUrl}} alt="">
   </td>
   <td>
-    <div ng-model='name'><strong>Name: </strong>{{item.name}}
-      <button type="button" ng-click='cartNumber = cartNumber +1' class="btn btn-warning pull-right">Add To Bag</button>
+    <div ng-model='name'><strong>{{item.name}}</strong>
+      <button type="button" ng-click='add(quantity)' class="btn btn-warning pull-right">Add To Bag</button>
       <div class='pull-right'>Quantity:
-        <select class="quantity pull-right" name="quantity">
-          <option ng-repeat='i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]' value="{{i}}">{{i}}</option>
+        <select class="quantity pull-right" ng-model='quantity' name="quantity">
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+          <option value='9'>9</option>
+          <option value='10'>10</option>
         </select>
       </div>
     </div>
@@ -51,8 +58,10 @@
     <p ng-model='ingredients'><strong>Ingredients: </strong>{{item.ingredients}}</p>
     <p ng-model='rating'><strong>Rating: </strong>{{item.rating}}</p>
     <p><strong>In stock: </strong>{{item.inStock | inStock}}</p>
-    <p><strong>Categories: </strong>{{arrayToString(item.categories)}}
+    <p><strong>Categories: </strong>
+      <ul>
+        <li ng-repeat='category in item.categories'>{{category}}</li>
+      </ul>
   </td>
 </tr>
 </table>
-</div>
